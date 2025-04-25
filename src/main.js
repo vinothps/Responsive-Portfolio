@@ -1,12 +1,14 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+const resumeLists = document.querySelectorAll('.resume-list');
+const resumeBoxs = document.querySelectorAll('.resume-box');
 
-document.querySelector('#app').innerHTML = `
-  <div>
-   
-  </div>
-`
 
-setupCounter(document.querySelector('#counter'))
+// resume section when clicking tab list
+resumeLists.forEach((list, idx) => {
+  list.addEventListener('click', () => {
+    document.querySelector('.resume-list.active').classList.remove('active');
+    list.classList.add('active');
+
+    document.querySelector('.resume-box.active').classList.remove('active');
+    resumeBoxs[idx].classList.add('active');
+  })
+});
