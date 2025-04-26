@@ -1,8 +1,33 @@
+const navs = document.querySelectorAll('.nav-list li');
+const cube = document.querySelector('.box');
+const sections = document.querySelectorAll('.section');
+
 const resumeLists = document.querySelectorAll('.resume-list');
 const resumeBoxs = document.querySelectorAll('.resume-box');
 
 const portfolioLists = document.querySelectorAll('.portfolio-list');
 const portfolioBoxs = document.querySelectorAll('.portfolio-box');
+
+// navbar actions and all section actions along with cube rotation when navbar is clicked
+navs.forEach((nav, idx) => {
+  nav.addEventListener('click', () => {
+    document.querySelector('.nav-list li.active').classList.remove('active');
+    nav.classList.add('active');
+
+   cube.style.transform = `rotateY(${idx * -90}deg)`;
+
+   document.querySelector('.section.active').classList.remove('active');
+   sections[idx].classList.add('active');
+
+   const array = Array.from(sections);
+   const arrSecs = array.slice(1, -1); // only requires indexes 1,2,3 or does not require start and end indexes
+   arrSecs.forEach(arrSec => {
+    if(arrSec.classList.contains('active')){
+      sections[4].classList.add('action-contact');
+    }
+   })
+  });
+});
 
 // resume section when clicking tab list
 resumeLists.forEach((list, idx) => {
