@@ -14,18 +14,21 @@ navs.forEach((nav, idx) => {
     document.querySelector('.nav-list li.active').classList.remove('active');
     nav.classList.add('active');
 
-   cube.style.transform = `rotateY(${idx * -90}deg)`;
+    cube.style.transform = `rotateY(${idx * -90}deg)`;
 
-   document.querySelector('.section.active').classList.remove('active');
-   sections[idx].classList.add('active');
+    document.querySelector('.section.active').classList.remove('active');
+    sections[idx].classList.add('active');
 
-   const array = Array.from(sections);
-   const arrSecs = array.slice(1, -1); // only requires indexes 1,2,3 or does not require start and end indexes
-   arrSecs.forEach(arrSec => {
-    if(arrSec.classList.contains('active')){
-      sections[4].classList.add('action-contact');
+    const array = Array.from(sections);
+    const arrSecs = array.slice(1, -1); // only requires indexes 1,2,3 or does not require start and end indexes
+    arrSecs.forEach(arrSec => {
+      if (arrSec.classList.contains('active')) {
+        sections[4].classList.add('action-contact');
+      }
+    });
+    if(sections[0].classList.contains('active')){
+      sections[4].classList.remove('action-contact');
     }
-   })
   });
 });
 
@@ -52,3 +55,7 @@ portfolioLists.forEach((list, idx) => {
   });
 });
 
+// visibility of contact section when reloading (cube reloading animation)
+setTimeout(() => {
+sections[4].classList.remove('active');
+}, 1500)
